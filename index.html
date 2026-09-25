@@ -1,13 +1,584 @@
+<?php
+$name = "Santo Monique";
+$title = "Web Developer";
+
+$about = "I am Santo Monique, a passionate web developer who enjoys creating clean, responsive, and user-friendly websites.";
+
+$email = "santomonique7@gmail.com";
+$phone = "09668973293";
+
+$skills = [
+    "HTML",
+    "CSS",
+    "PHP",
+    "JavaScript",
+    "MySQL"
+];
+
+$projects = [
+    [
+        "name" => "Personal Portfolio",
+        "description" => "A responsive portfolio website built with HTML, CSS, and PHP."
+    ],
+    [
+        "name" => "Student Management System",
+        "description" => "A simple PHP and MySQL system for managing student records."
+    ],
+    [
+        "name" => "Business Website",
+        "description" => "A modern website design for a small business."
+    ]
+];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chinay</title>
+
+    <title><?php echo $name; ?> | Portfolio</title>
+
+    <style>
+
+        /* =========================
+           GENERAL STYLES
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            background: #111827;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            color: white;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            min-height: 90vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-size: 25px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 12px 25px;
+
+            background: white;
+            color: #2563eb;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #e5e7eb;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 40px;
+
+            font-size: 35px;
+
+            color: #111827;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            max-width: 800px;
+
+            margin: auto;
+
+            text-align: center;
+
+            font-size: 18px;
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills {
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .skill {
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 25px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #1d4ed8;
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(250px, 1fr)
+                );
+
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card h3 {
+            color: #2563eb;
+
+            margin-bottom: 10px;
+
+            font-size: 22px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 15px 0;
+
+            font-size: 18px;
+        }
+
+        .contact a {
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h3 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-    <div>
-        name: santo monique
-    </div>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav>
+
+        <h2>
+            <?php echo $name; ?>
+        </h2>
+
+        <ul>
+
+            <li>
+                <a href="#home">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div>
+
+            <h1>
+                <?php echo $name; ?>
+            </h1>
+
+            <h3>
+                <?php echo $title; ?>
+            </h3>
+
+            <p>
+                Welcome to my personal portfolio.
+                I create websites and applications
+                using modern web technologies.
+            </p>
+
+            <a
+                href="#projects"
+                class="btn"
+            >
+                View My Projects
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About Me
+        </h2>
+
+        <div class="about">
+
+            <p>
+                <?php echo $about; ?>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS SECTION
+    ========================== -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            My Skills
+        </h2>
+
+        <div class="skills">
+
+            <?php foreach ($skills as $skill): ?>
+
+                <div class="skill">
+
+                    <?php echo $skill; ?>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS SECTION
+    ========================== -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            My Projects
+        </h2>
+
+        <div class="projects">
+
+            <?php foreach ($projects as $project): ?>
+
+                <div class="project-card">
+
+                    <h3>
+                        <?php echo $project["name"]; ?>
+                    </h3>
+
+                    <p>
+                        <?php
+                        echo $project["description"];
+                        ?>
+                    </p>
+
+                </div>
+
+            <?php endforeach; ?>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT SECTION
+    ========================== -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            Contact Me
+        </h2>
+
+        <div class="contact">
+
+            <p>
+                📧 Email:
+                <a href="mailto:<?php echo $email; ?>">
+                    <?php echo $email; ?>
+                </a>
+            </p>
+
+            <p>
+                📱 Phone:
+                <a href="tel:<?php echo $phone; ?>">
+                    <?php echo $phone; ?>
+                </a>
+            </p>
+
+            <p>
+                📍 Philippines
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            &copy;
+            <?php echo date("Y"); ?>
+
+            <?php echo $name; ?>.
+
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
 </body>
+
 </html>
